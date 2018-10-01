@@ -1,0 +1,61 @@
+<app-header></app-header>
+<div class="container">
+<button type="button" class="btn btn-primary"(click) ="viewstockcal()">Enter stock details</button>
+<button type="button" class="btn btn-primary"(click)="viewAllStocks()">View calculated Result</button>
+<div *ngIf="dataAvilabel">
+  	<div class="card">
+				<h5 class="card-header"> View existing calculations</h5>
+				<div class="card-body">
+					<div class="row">
+						<div class="col-md-6">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Stock Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Percentage</th>
+                    <th>Years</th>
+                  </tr>
+                </thead>
+                <tbody *ngFor= "let val of displayStockDetails.stocks;  let i = index" [attr.data-index]="i">
+                  <tr (click)="showDetailedData(val.princpleintrest)">
+                    <td>{{val.stockName}}</td>
+                    <td>{{val.price}}</td>
+                    <td>{{val.quantity}}</td>
+                    <td>{{val.percentage}}</td>
+                    <td>{{val.years}}</td>
+                    </tr>
+                </tbody>
+              </table>
+           </div>
+          </div>
+        </div>
+      </div>
+</div>
+<div *ngIf="showDetailesAvilable">
+  	<div class="card">
+				<h5 class="card-header">Stock productivity Result</h5>
+				<div class="card-body">
+					<div class="row">
+						<div class="col-md-6">
+              <table class="table table-bordered">
+										<thead>
+											<tr>
+												<th>Year</th>
+												<th>Value</th>
+											</tr>
+										</thead>
+										<tbody *ngFor= "let val of showDetailes;  let i = index" [attr.data-index]="i">
+											<tr>
+												<td>{{i}}</td>
+												<td>{{val}}</td>
+											</tr>
+										</tbody>
+									</table>
+           </div>
+          </div>
+        </div>
+      </div>
+</div>
+</div>

@@ -1,0 +1,90 @@
+
+<app-header></app-header>
+<div class="container">
+	<button type="button" class="btn btn-primary"(click) ="viewstockcal()">Enter stock details</button>
+	<button type="button" class="btn btn-primary"(click)="viewAllStocks()">View calculated Result</button>
+	<div *ngIf="!viewAllStock">
+		<div class="card">
+			<h5 class="card-header">Enter stock details</h5>
+			<div class="card-body">
+				<div class="row">
+					<div class="col-md-6 offset-md-3">
+						<form autocomplete="off" name="form" (ngSubmit)="stockform.form.valid && onSubmit(stockform.value)" #stockform="ngForm" novalidate>
+							<div class="form-group">
+								<label for="stockname">Stock Name</label>
+								<input type="text" ngModel class="form-control" name="stockName"  #stockName="ngModel" required />
+								<label for="price">Price</label>
+								<input type="text" ngModel class="form-control" name="price"  #price ="ngModel" required />
+								<label for="quantity">Quantity</label>
+								<input type="text" ngModel class="form-control" name="quantity" #quantity="ngModel" required />
+								<label for="percentage">Percentage</label>
+								<input type="text" ngModel class="form-control" name="percentage" #percentage="ngModel" required />
+								<label for="years">Years</label>
+								<input type="text" ngModel class="form-control" name="years" #years="ngModel" required />
+								<br />
+								<button class="btn btn-primary" [disabled]="stockform.invalid">Calculate</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div *ngIf="viewDetailes">
+			<div class="card">
+				<h5 class="card-header">Calculation result</h5>
+				<div class="card-body">
+					<div class="row">
+						<div class="col-md-6">
+							<table class="table table-bordered">
+								<thead>
+									<tr>
+										<th>Field</th>
+										<th>Value</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Stock Name
+											<td>{{stockData.stockName}}</td>
+										</tr>
+										<tr>
+											<td>Price
+												<td>{{stockData.price}}</td>
+											</tr>
+											<tr>
+												<td>Quantity</td>
+												<td>{{stockData.quantity}}</td>
+											</tr>
+											<tr>
+												<td>Percentage</td>
+												<td>{{stockData.percentage}}</td>
+											</tr>
+											<tr>
+												<td>Years</td>
+												<td>{{stockData.years}}</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="col-md-6">
+									<table class="table table-bordered">
+										<thead>
+											<tr>
+												<th>Year</th>
+												<th>Value</th>
+											</tr>
+										</thead>
+										<tbody *ngFor= "let val of stockData.princpleintrest;  let i = index" [attr.data-index]="i">
+											<tr>
+												<td>{{i}}</td>
+												<td>{{val}}</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+	</div>
+</div>

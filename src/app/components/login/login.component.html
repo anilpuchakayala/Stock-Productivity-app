@@ -1,0 +1,23 @@
+
+<div class="container-fluid">
+  <div class="row jumbotron">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+      <div>
+        <h3>Login</h3>
+<form #loginForm="ngForm" role="form" (ngSubmit)="onLogIn(Email.value, Password.value)">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" #Email ngModel class="form-control" name="Email" placeholder="Email" required email>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" #Password ngModel class="form-control" name="Password" placeholder="Password" required>
+          </div>
+        <button class="btn btn-default" [disabled]="!loginForm.valid" type="submit" style="margin-right: 20px;">Login In</button>
+           <a class="navbar-brand"  [routerLink]="['/signup']">Sign Up</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
